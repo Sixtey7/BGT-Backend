@@ -27,6 +27,8 @@ Holds the database related files
     * UUID of the player
 * score
     * int
+* team
+    * int
 * winner
     * boolean
 
