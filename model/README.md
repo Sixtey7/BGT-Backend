@@ -17,7 +17,19 @@ Holds the database related files
     * UUID
 * name
     * string
-    
+
+### Session Players
+* id
+    * UUID
+* session id
+    * UUID of the session
+* player id
+    * UUID of the player
+* score
+    * int
+* winner
+    * boolean
+
 ### Session
 * id
     * UUID
@@ -25,11 +37,3 @@ Holds the database related files
     * date
 * game
     * UUID of the game that was played
-* players
-    * JSON array of:
-        * player 
-            * uuid
-        * score
-            * int
-        * winner
-            * boolean
