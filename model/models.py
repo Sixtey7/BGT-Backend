@@ -60,6 +60,7 @@ class SessionPlayers(db.Model):
     score = Column(Integer)
     team = Column(Integer)
     winner = Column(Boolean)
+    session = relationship("Session", back_populates="players")
 
     def __repr__(self):
         return "<SessionPlayers(id='%s', session_id='%s', player_id='%s', score='%d', team='%d', winner='%s')>" % \
@@ -68,7 +69,7 @@ class SessionPlayers(db.Model):
     def to_obj(self):
         """Returns the object in JSON format
 
-        :return: String represenation of the object
+        :return: String representation of the object
         """
 
         return {
@@ -88,3 +89,4 @@ class Session(db.Model):
     id = Column(String, primary_key=True)
     date = Column(Date)
     game = Column(String, ForeignKey('game.id'))
+    players = relationship("SessionPlayers", back_populates="session")
