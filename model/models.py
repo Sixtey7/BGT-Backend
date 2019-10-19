@@ -1,5 +1,5 @@
 from model.database import db
-from sqlalchemy import Column, String, Integer, Boolean, ForeignKey
+from sqlalchemy import Column, String, Integer, Boolean, Date, ForeignKey
 from sqlalchemy.orm import relationship
 
 
@@ -79,3 +79,12 @@ class SessionPlayers(db.Model):
             'team': self.team,
             'winner': self.winner
         }
+
+
+class Session(db.Model):
+    """Model class used to store the Session information
+    """
+    __tablename__ = 'session'
+    id = Column(String, primary_key=True)
+    date = Column(Date)
+    game = Column(String, ForeignKey('game.id'))
