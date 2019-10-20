@@ -55,7 +55,7 @@ class SessionPlayers(db.Model):
     """
     __tablename__ = 'session-players'
     id = Column(String, primary_key=True)
-    session_id = Column(String)
+    session_id = Column(String, ForeignKey('session.id'))
     player_id = Column(String, ForeignKey('player.id'))
     score = Column(Integer)
     team = Column(Integer)
