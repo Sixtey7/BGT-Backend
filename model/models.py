@@ -90,3 +90,19 @@ class Session(db.Model):
     date = Column(Date)
     game = Column(String, ForeignKey('game.id'))
     players = relationship("SessionPlayers", back_populates="session")
+
+    def __repr(self):
+        return "<Session(id='%s', date='%s', game='%s')" % (self.id, self.date, self.game.id)
+
+    def to_obj(self):
+        """Returns the object in JSON format
+
+        :return String representation of the object
+        """
+
+        return {
+            'id': self.id,
+            'date': self.date,
+            'game_id:': self.game,
+            'players': [player.to_obj() for player in self.players]
+        }

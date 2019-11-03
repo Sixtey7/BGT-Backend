@@ -13,7 +13,7 @@ CORS(app, resources={r"/*": {"origins": "http://localhost:8080"}})
     
 app.register_blueprint(game_api, url_prefix="/games/")
 app.register_blueprint(player_api, url_prefix="/players")
-app.register_blueprint(session_api, url_prefix="/sessions")
+app.register_blueprint(session_api, url_prefix="/sessions/")
 app.register_blueprint(session_players_api, url_prefix="/session-players")
 
 
