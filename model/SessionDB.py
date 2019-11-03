@@ -37,7 +37,7 @@ def create(sess_date, game_id, session_id=None):
         session_id = str(uuid4())
 
     date_parts = [int(x) for x in sess_date.split('-')]
-    print('Got the string parts: %s' % date_parts)
+    # TODO: should probably eventually add some validation here
     date_obj = date(date_parts[0], date_parts[1], date_parts[2])
     new_session = Session(id=session_id, date=date_obj, game=game_id)
 
@@ -63,7 +63,10 @@ def update(session_id, sess_date=None, game_id=None):
         raise ValueError("Could not find Session with id")
 
     if date is not None:
-        session_to_update.date = sess_date
+        date_parts = [int(x) for x in sess_date.split('-')]
+        # TODO: should probably eventually add some validation here
+        date_obj = date(date_parts[0], date_parts[1], date_parts[2])
+        session_to_update.date = date_obj
 
     if game_id is not None:
         session_to_update.game_id = game_id
