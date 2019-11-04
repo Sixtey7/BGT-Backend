@@ -9,12 +9,15 @@ from flask_cors import CORS
 # create the flask app
 app = Flask(__name__)
 # add in CORS support
-CORS(app, resources={r"/*": {"origins": "http://localhost:8080"}})
-    
+CORS(app, resources={r"/games/*": {"origins": "http://localhost:8080"}})
+CORS(app, resources={r"/players/*": {"origins": "http://localhost:8080"}})
+CORS(app, resources={r"/sessions/*": {"origins": "http://localhost:8080"}})
+CORS(app, resources={r"/session-players/*": {"origins": "http://localhost:8080"}})
+
 app.register_blueprint(game_api, url_prefix="/games/")
-app.register_blueprint(player_api, url_prefix="/players")
+app.register_blueprint(player_api, url_prefix="/players/")
 app.register_blueprint(session_api, url_prefix="/sessions/")
-app.register_blueprint(session_players_api, url_prefix="/session-players")
+app.register_blueprint(session_players_api, url_prefix="/session-players/")
 
 
 # SQLAlchemy config
