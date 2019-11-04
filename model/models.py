@@ -103,6 +103,6 @@ class Session(db.Model):
         return {
             'id': self.id,
             'date': self.date,
-            'game_id:': self.game,
+            'game_id': self.game,
             'players': [player.to_obj() for player in self.players]
         }
