@@ -13,7 +13,7 @@ def get_all():
     return jsonify([game.to_obj() for game in GameDB.get_all()]), 200
 
 
-@game_api.route('/<string:game_id>', methods=['GET'])
+@game_api.route('<string:game_id>', methods=['GET'])
 def get(game_id):
     """Returns the Game specified by the provided game_id
 
@@ -46,7 +46,7 @@ def create():
     return jsonify(game.to_obj()), 200
 
 
-@game_api.route('/<string:game_id>', methods=['PUT'])
+@game_api.route('<string:game_id>', methods=['PUT'])
 def update(game_id):
     """Updates the specified Game with the contents of the request body (in JSON)
 
@@ -68,7 +68,7 @@ def update(game_id):
         abort(404, 'Could not find Game with the provided id')
 
 
-@game_api.route('/<string:game_id>', methods=['DELETE'])
+@game_api.route('<string:game_id>', methods=['DELETE'])
 def delete(game_id):
     """Deletes the specified Game from the database
 
