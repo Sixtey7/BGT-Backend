@@ -13,7 +13,7 @@ def get_all():
     return jsonify([session_players.to_obj() for session_players in SessionPlayersDB.get_all()]), 200
 
 
-@session_players_api.route('/<string:session_players_id>', methods=['GET'])
+@session_players_api.route('<string:session_players_id>', methods=['GET'])
 def get(session_players_id):
     """Returns the SessionPlayers specified by the provided session_players_id
 
@@ -49,7 +49,7 @@ def create():
     return jsonify(session_players.to_obj()), 200
 
 
-@session_players_api.route('/<string:session_players_id>', methods=['PUT'])
+@session_players_api.route('<string:session_players_id>', methods=['PUT'])
 def update(session_players_id):
     """Updates the specified SessionPlayers with the contents of the request body (in JSON)
 
@@ -75,7 +75,7 @@ def update(session_players_id):
         abort(404, 'Could not find SessionPlayers with the provided id')
 
 
-@session_players_api.route('/<string:session_players_id>', methods=['DELETE'])
+@session_players_api.route('<string:session_players_id>', methods=['DELETE'])
 def delete(session_players_id):
     """Deletes the specified SessionPlayers from the database
 

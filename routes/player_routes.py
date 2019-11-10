@@ -13,7 +13,7 @@ def get_all():
     return jsonify([player.to_obj() for player in PlayerDB.get_all()]), 200
 
 
-@player_api.route('/<string:player_id>', methods=['GET'])
+@player_api.route('<string:player_id>', methods=['GET'])
 def get(player_id):
     """Returns the Player specified by the provided player_id
 
@@ -43,7 +43,7 @@ def create():
     return jsonify(player.to_obj()), 200
 
 
-@player_api.route('/<string:player_id>', methods=['PUT'])
+@player_api.route('<string:player_id>', methods=['PUT'])
 def update(player_id):
     """Updates the specified Player with the contents of the request body (in JSON)
 
@@ -63,7 +63,7 @@ def update(player_id):
         abort(404, 'Could not find Player with the provided id')
 
 
-@player_api.route('/<string:player_id>', methods=['DELETE'])
+@player_api.route('<string:player_id>', methods=['DELETE'])
 def delete(player_id):
     """Deletes the specified Player from the database
 

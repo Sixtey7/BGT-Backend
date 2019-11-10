@@ -13,7 +13,7 @@ def get_all():
     return jsonify([session.to_obj() for session in SessionDB.get_all()]), 200
 
 
-@session_api.route('/<string:session_id>', methods=['GET'])
+@session_api.route('<string:session_id>', methods=['GET'])
 def get(session_id):
     """Returns the Session specified by the provided session_id
 
@@ -46,7 +46,7 @@ def create():
     return jsonify(session.to_obj()), 200
 
 
-@session_api.route('/<string:session_id>', methods=['PUT'])
+@session_api.route('<string:session_id>', methods=['PUT'])
 def update(session_id):
     """Updates the specified Session with the contents of the request body (in JSON)
 
@@ -68,7 +68,7 @@ def update(session_id):
         abort(404, 'Could not find Session with the provided id')
 
 
-@session_api.route('/<string:session_id>', methods=['DELETE'])
+@session_api.route('<string:session_id>', methods=['DELETE'])
 def delete(session_id):
     """Deletes the specified Session from the database
 
