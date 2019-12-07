@@ -43,6 +43,11 @@ def create():
                                request.json['game_id'],
                                request.json['id'] if 'id' in request.json else None)
 
+    if hasattr(session, 'players'):
+        print ("Found Players!")
+    else:
+        print('No players Here!')
+
     return jsonify(session.to_obj()), 200
 
 
