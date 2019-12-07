@@ -89,6 +89,35 @@ def update(session_players_id, session_id=None, player_id=None, score=None, team
     return session_players_to_update
 
 
+def merge(session_id, player_id, score, team, winner, session_players_id=None):
+    """Creates or Updates a SessionPlayers given the provided values
+
+    :param session_id: The id of the session that the SessionPlayers object belongs to
+    :param player_id: The id of the player that the SessionPlayers object belongs to
+    :param score: The score of the SessionPlayers object
+    :param team: The team of the SessionPlayers object
+    :param winner: Boolean to store if this SessionPlayers object was a winner
+    :param session_players_id: The id to assign to the SessionPlayers.  If not provided, a uuid will be generated
+    :return The created SessionPlayers object
+    :rtype: SessionPlayers
+    """
+
+    if session_players_id is None:
+        session_players_id = str(uuid4())
+
+    new_session_players = SessionPlayers(id=session_players_id,
+                                         session_id=session_id,
+                                         player_id=player_id,
+                                         score=score,
+                                         team=team,
+                                         winner=winner)
+
+    db.session.merge(new_session_players)
+    db.session.commit()
+
+    return new_session_players
+
+
 def delete(session_players_id):
     """Deletes the SessionPlayers specified by the provided session_players_id
 
