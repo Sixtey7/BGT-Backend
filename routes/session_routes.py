@@ -1,5 +1,6 @@
 from flask import Blueprint, abort, jsonify, request
 import model.SessionDB as SessionDB
+import model.SessionPlayersDB as SessionPlayerDB
 
 session_api = Blueprint('session_api', __name__)
 
@@ -43,8 +44,9 @@ def create():
                                request.json['game_id'],
                                request.json['id'] if 'id' in request.json else None)
 
-    if hasattr(session, 'players'):
-        print ("Found Players!")
+    if 'players' in request.json:
+        print("Found Players!")
+        SessionPlayerDB.merge_all(session.id, request.json['players'])
     else:
         print('No players Here!')
 

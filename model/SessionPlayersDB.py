@@ -118,6 +118,33 @@ def merge(session_id, player_id, score, team, winner, session_players_id=None):
     return new_session_players
 
 
+def merge_all(session_id, session_player_list):
+    """Creates or updates all of the SessionPlayers in the provided list
+
+    :param session_id: The id of the session to add the session players to
+    :param session_player_list: A list of session player entries to be merged
+    :return a list of all of the added/modified session players
+    :raise ValueError if a required value is not provided
+    """
+
+    if session_player_list is None:
+        raise ValueError("session_list is required")
+
+    print('length of array was %d' % len(session_player_list))
+
+    return_vals = []
+
+    for session_player in session_player_list:
+        return_vals.append(merge(session_id,
+                                 session_player.player_id,
+                                 session_player.score,
+                                 session_player.team,
+                                 session_player.winner,
+                                 session_player.id))
+
+    return return_vals
+
+
 def delete(session_players_id):
     """Deletes the SessionPlayers specified by the provided session_players_id
 
