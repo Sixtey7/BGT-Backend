@@ -132,17 +132,17 @@ def merge_all(session_id, session_player_list):
 
     print('length of array was %d' % len(session_player_list))
 
-    return_vals = []
+    return_values = []
 
     for session_player in session_player_list:
-        return_vals.append(merge(session_id,
+        return_values.append(merge(session_id,
                                  session_player.player_id,
                                  session_player.score,
                                  session_player.team,
                                  session_player.winner,
                                  session_player.id))
 
-    return return_vals
+    return return_values
 
 
 def delete(session_players_id):
