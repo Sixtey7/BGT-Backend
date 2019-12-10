@@ -136,11 +136,11 @@ def merge_all(session_id, session_player_list):
 
     for session_player in session_player_list:
         return_values.append(merge(session_id,
-                                 session_player.player_id,
-                                 session_player.score,
-                                 session_player.team,
-                                 session_player.winner,
-                                 session_player.id))
+                                   session_player.player_id,
+                                   session_player.score,
+                                   session_player.team,
+                                   session_player.winner,
+                                   session_player.id))
 
     return return_values
 
